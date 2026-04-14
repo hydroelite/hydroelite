@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lo que aprendí con Melanie Marshall en Gold Coast — Sergio Ordóñez · HydroElite</title>
+<meta name="description" content="Viajé a Australia para conocer los mejores grupos de natación del mundo. Lo que encontré en Gold Coast con Melanie Marshall cambió mi manera de entender el entrenamiento de élite.">
+<meta name="author" content="Sergio Ordóñez — HydroElite">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Lo que aprendí con Melanie Marshall en Gold Coast">
+<meta property="og:description" content="Viajé a Australia para conocer los mejores grupos de natación del mundo. Lo que encontré en Gold Coast cambió mi manera de entender el entrenamiento de élite.">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="es_ES">
+<meta property="article:published_time" content="2024-09-15">
+<meta property="article:author" content="Sergio Ordóñez">
+<link rel="icon" type="image/x-icon" href="../imgs/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="../imgs/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../imgs/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../imgs/apple-touch-icon.png">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garant:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #050d1a;
+    --bg2: #0a1628;
+    --bg3: #0f1e35;
+    --text: #f0ede4;
+    --muted: #8a8f9e;
+    --blue: #1e7fd8;
+    --blue-light: #4fa3f0;
+    --blue-dim: rgba(30, 127, 216, 0.12);
+    --gold: #c9a55a;
+    --border: rgba(240, 237, 228, 0.08);
+    --border-blue: rgba(30, 127, 216, 0.3);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.4rem 4rem;
+    background: rgba(7, 9, 15, 0.95);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem;
+    letter-spacing: 0.08em;
+    color: var(--text);
+    text-decoration: none;
+    display: flex; align-items: center; gap: 12px;
+  }
+
+  .nav-logo span { color: var(--blue); }
+
+  .nav-back {
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.3s;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+
+  .nav-back:hover { color: var(--text); }
+
+  /* HERO ARTICLE */
+  .article-hero {
+    min-height: 60vh;
+    display: flex;
+    align-items: flex-end;
+    position: relative;
+    overflow: hidden;
+    padding: 0 4rem 5rem;
+    margin-top: 0;
+  }
+
+  .article-hero-img {
+    position: absolute; inset: 0;
+    background-image: url('../imgs/goldcoast_pool.jpg');
+    background-size: cover;
+    background-position: center 50%;
+    filter: brightness(0.35);
+  }
+
+  .article-hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, var(--bg) 0%, transparent 60%);
+  }
+
+  .article-hero-content {
+    position: relative; z-index: 2;
+    max-width: 780px;
+  }
+
+  .article-tag {
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 1.2rem;
+    display: block;
+  }
+
+  .article-title {
+    font-family: 'Cormorant Garant', serif;
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
+    font-weight: 300;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+  }
+
+  .article-title em {
+    font-style: italic;
+    color: var(--blue-light);
+  }
+
+  .article-meta {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+
+  .article-meta-dot {
+    width: 3px; height: 3px;
+    background: var(--blue);
+    border-radius: 50%;
+  }
+
+  /* ARTICLE BODY */
+  .article-body {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 5rem 2rem 8rem;
+  }
+
+  .article-body p {
+    font-size: 1.05rem;
+    line-height: 1.95;
+    color: var(--muted);
+    margin-bottom: 1.8rem;
+  }
+
+  .article-body p strong {
+    color: var(--text);
+    font-weight: 400;
+  }
+
+  .article-body p em {
+    color: var(--blue-light);
+    font-style: italic;
+  }
+
+  .article-lead {
+    font-family: 'Cormorant Garant', serif;
+    font-size: 1.35rem !important;
+    font-weight: 300;
+    color: var(--text) !important;
+    line-height: 1.7 !important;
+    margin-bottom: 3rem !important;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .article-pullquote {
+    border-left: 2px solid var(--blue);
+    padding: 1.5rem 2rem;
+    margin: 3rem 0;
+    background: var(--bg2);
+  }
+
+  .article-pullquote p {
+    font-family: 'Cormorant Garant', serif;
+    font-size: 1.3rem !important;
+    font-style: italic;
+    color: var(--text) !important;
+    line-height: 1.6 !important;
+    margin: 0 !important;
+  }
+
+  .article-h2 {
+    font-family: 'Cormorant Garant', serif;
+    font-size: 1.8rem;
+    font-weight: 300;
+    color: var(--text);
+    margin: 3.5rem 0 1.5rem;
+    line-height: 1.2;
+  }
+
+  .article-h2 em {
+    font-style: italic;
+    color: var(--blue-light);
+  }
+
+  .article-img {
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    margin: 3rem 0;
+    border: 1px solid var(--border);
+    display: block;
+  }
+
+  .article-img-caption {
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-top: -2rem;
+    margin-bottom: 3rem;
+    text-align: center;
+  }
+
+  /* CTA */
+  .article-cta {
+    background: var(--bg2);
+    border: 1px solid var(--border-blue);
+    padding: 3rem;
+    text-align: center;
+    margin-top: 5rem;
+  }
+
+  .article-cta-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .article-cta-title {
+    font-family: 'Cormorant Garant', serif;
+    font-size: 1.8rem;
+    font-weight: 300;
+    margin-bottom: 1rem;
+  }
+
+  .article-cta p {
+    color: var(--muted);
+    margin-bottom: 2rem;
+    font-size: 0.95rem !important;
+  }
+
+  .btn-primary {
+    background: var(--blue);
+    color: #fff;
+    padding: 0.9rem 2.2rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border: none; cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s;
+    display: inline-block;
+  }
+
+  .btn-primary:hover { background: var(--blue-light); }
+
+  /* FOOTER */
+  footer {
+    padding: 2.5rem 4rem;
+    border-top: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+
+  .footer-logo {
+    font-family: 'Cormorant Garant', serif;
+    font-size: 1.2rem;
+    color: var(--text);
+  }
+
+  .footer-logo span { color: var(--blue); }
+
+  .footer-copy {
+    font-size: 0.78rem;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+  }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    nav { padding: 1.2rem 1.5rem; }
+    .article-hero { padding: 0 1.5rem 4rem; min-height: 50vh; }
+    .article-body { padding: 3rem 1.5rem 5rem; }
+    .article-pullquote { padding: 1.2rem 1.5rem; margin: 2rem 0; }
+    .article-cta { padding: 2rem 1.5rem; }
+    footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="../index.html" class="nav-logo">
+    <img src="../imgs/logo_he.png" alt="HydroElite" style="height:38px;width:auto;">
+    Hydro<span>Elite</span>
+  </a>
+  <a href="../index.html" class="nav-back">
+    ← Volver a la web
+  </a>
+</nav>
+
+<!-- HERO -->
+<div class="article-hero">
+  <div class="article-hero-img"></div>
+  <div class="article-hero-overlay"></div>
+  <div class="article-hero-content">
+    <span class="article-tag">Australia · Gold Coast · Septiembre 2024</span>
+    <h1 class="article-title">Lo que aprendí con<br><em>Melanie Marshall</em> en Gold Coast</h1>
+    <div class="article-meta">
+      <span>Sergio Ordóñez</span>
+      <div class="article-meta-dot"></div>
+      <span>HydroElite</span>
+      <div class="article-meta-dot"></div>
+      <span>7 min de lectura</span>
+    </div>
+  </div>
+</div>
+
+<!-- BODY -->
+<div class="article-body">
+
+  <p class="article-lead">Hay momentos en los que sabes, antes incluso de que ocurran, que van a cambiar algo en ti. Subir a ese avión rumbo a Australia era uno de ellos. Lo que no sabía es hasta qué punto.</p>
+
+  <p>Mi primer destino fue <strong>Gold Coast</strong>. Una ciudad que para la mayoría del mundo es sinónimo de surf y playas infinitas, pero que para quien se mueve en el mundo de la natación tiene otro significado: es uno de los epicentros del talento acuático mundial. Y en el corazón de ese talento, en el <strong>Gold Coast Aquatic Centre</strong>, trabaja <strong>Melanie Marshall</strong>.</p>
+
+  <img class="article-img" src="../imgs/goldcoast_pool.jpg" alt="Gold Coast Aquatic Centre — sesión de entrenamiento del grupo de Melanie Marshall" style="aspect-ratio: 21/9; object-position: center 62%;">
+  <p class="article-img-caption">Gold Coast Aquatic Centre · Sesión matinal del grupo de Melanie Marshall</p>
+
+  <p>Si el nombre no te dice nada, te lo pongo en contexto: Melanie fue la entrenadora de <strong>Adam Peaty</strong> durante los años en que se convirtió en el mejor bracista de todos los tiempos. Récords mundiales, oro olímpico, dominancia absoluta durante casi una década. Melanie es británica, y tomó la decisión de viajar a Australia — al menos hasta Los Ángeles 2028 — para coger las riendas de un grupo de rendimiento ya consolidado en el Gold Coast Aquatic Centre. No llegó a construir algo desde cero: llegó a elevar lo que ya existía. Y lo que está haciendo es, sin exageración, uno de los entornos de entrenamiento más completos que he visto en mi vida.</p>
+
+  <div class="article-pullquote">
+    <p>"Un grupo con segundo entrenador, biomecánico, fisiólogo, preparador físico, fisioterapeuta, nutricionista y psicólogo. No como lujo, sino como parte del proceso normal de entrenamiento."</p>
+  </div>
+
+  <p>Cuando llegué al centro el primer día, no sabía muy bien qué esperar. Era un entrenador joven, español, recién llegado al otro lado del mundo. Melanie habría tenido motivos de sobra para tratarme como lo que era: un observador externo. No lo hizo. <strong>Desde el primer día me trató como a uno más del equipo.</strong> Me dirigía la palabra durante los entrenamientos, me preguntaba mi opinión, me permitió trabajar directamente con algunos deportistas. Esa confianza, viniendo de quien venía, fue algo que no olvidaré.</p>
+
+  <h2 class="article-h2">La semana que <em>Adam Peaty</em> apareció por el centro</h2>
+
+  <p>Durante mi primera semana en Gold Coast, <strong>Adam Peaty estuvo de visita en el centro</strong>. Verle en persona, en el agua, en ese contexto, es una de esas experiencias difíciles de describir con palabras. No porque sea un ídolo inalcanzable — de hecho, es todo lo contrario — sino porque ves de cerca lo que hay detrás de la leyenda: trabajo, disciplina y una mentalidad que se percibe en cada gesto fuera del agua, no solo dentro de ella.</p>
+
+  <p>Aproveché cada sesión para observar, preguntar y absorber. La metodología de Melanie tiene una filosofía clara que, cuanto más la veía en acción, más sentido me hacía: <strong>el rendimiento máximo y el disfrute no son opuestos, son inseparables.</strong></p>
+
+  <div class="article-pullquote">
+    <p>"Al contrario de lo que mucha gente cree del alto rendimiento, Melanie hacía el entrenamiento divertido. Y esa es precisamente la clave para sacar el máximo potencial y mantenerse en el tiempo."</p>
+  </div>
+
+  <p>El ambiente que generaba en el agua era de una concentración y una exigencia altísimas, pero nunca pesadas. Los deportistas llegaban cada mañana con ganas, no con obligación. Y eso, en el alto rendimiento, es más difícil de conseguir de lo que parece.</p>
+
+  <img class="article-img" src="../imgs/australia_mia.jpg" alt="Con Mia O'Leary en el Gold Coast Aquatic Centre, Australia" style="object-position: center 52%;">
+  <p class="article-img-caption">Con Mia O'Leary · Gold Coast Aquatic Centre · Australia</p>
+
+  <h2 class="article-h2">Las personas que <em>te cambian sin saberlo</em></h2>
+
+  <p>A lo largo de ese mes en Gold Coast, el centro se convirtió en mi segundo hogar. Y como en cualquier hogar, lo que más importa no son las instalaciones sino las personas. Entablé amistad con deportistas de perfiles completamente distintos: <strong>Mia O'Leary</strong>, bracista especializada en los 50 y 100 metros, con una capacidad de velocidad que impresiona en cada salida; <strong>Darragh Greene</strong>, bracista irlandés con una trayectoria olímpica que habla por sí sola; <strong>Nash Wilkes</strong>, bracista australiano al mismo nivel que Darragh, con ese temple que da haber competido en los grandes escenarios; y <strong>Enoch Robb</strong>, un chico más joven con un futuro enorme por delante, especializado en espalda en los 100 y 200 metros. Historias y recorridos muy diferentes, pero con algo en común: todos tenían muy claro por qué hacían lo que hacían.</p>
+
+  <p>Eso es algo que, desde fuera, el espectador no ve. Ve los tiempos, las medallas, los récords. Pero no ve las conversaciones antes del entrenamiento, la forma en que un deportista de élite gestiona un mal día, cómo procesa el dolor o la frustración. <strong>Esas conversaciones fueron, probablemente, lo más valioso que me llevé de Australia.</strong></p>
+
+  <h2 class="article-h2">Lo que <em>traje de vuelta</em></h2>
+
+  <p>Hay una trampa en la que es fácil caer cuando visitas entornos de élite: pensar que lo que ves no es aplicable a tu realidad. Que los recursos, las instalaciones, los deportistas son tan distintos a los tuyos que lo aprendido se queda allí, en Australia, sin poder trasladarse.</p>
+
+  <p>No lo creo. Lo que más me llevé de Gold Coast no fue una serie de ejercicios ni un protocolo de entrenamiento. Fue una <strong>forma de entender el proceso</strong>: la convicción de que el entrenamiento tiene que tener sentido para quien lo hace, que la exigencia y el disfrute no se excluyen, y que un entrenador que confía en sus deportistas y les da autonomía obtiene de ellos más de lo que cualquier método por sí solo podría extraer.</p>
+
+  <p>Eso es trasladable. A un nadador de club, a un triatleta amateur, a alguien que empieza desde cero. <em>La filosofía escala.</em> Los recursos, no siempre. Pero la filosofía, siempre.</p>
+
+  <p>Australia fue un viaje enorme — en distancia, en tiempo y en lo que significó. Y dentro de ese viaje, Gold Coast fue el primer destino y el más importante. El lugar donde más aprendí, donde más me cuestioné y donde más creció mi manera de entender este deporte. Todo lo que vino después de ese mes lo viví con otra mirada.</p>
+
+  <p style="text-align:center; font-size:0.85rem; letter-spacing:0.06em; color:var(--muted); margin-top: 4rem;">¿Qué te ha parecido? Cuéntamelo en Instagram —&nbsp;<a href="https://www.instagram.com/coachsergiordonez" target="_blank" rel="noopener noreferrer" style="color:var(--blue); text-decoration:none;">@coachsergiordonez</a></p>
+
+  <div class="article-cta">
+    <span class="article-cta-label">¿Te ha resultado útil?</span>
+    <div class="article-cta-title">Aplica esto a tu natación</div>
+    <p>Si quieres entrenar con una metodología que tenga sentido — para tu nivel, tus objetivos y tu vida — hablamos sin compromiso.</p>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSesxnLVkb-YdPcBTXJpyCVTngfMG-rwtgU6zSA1Izod4POlUQ/viewform?usp=header" target="_blank" rel="noopener noreferrer" class="btn-primary">Empieza ahora</a>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Hydro<span>Elite</span></div>
+  <div class="footer-copy">© 2026 HydroElite · Coach Sergio Ordóñez</div>
+</footer>
+
+</body>
+</html>
