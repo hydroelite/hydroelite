@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://hydroelite.github.io/hydroelite/sitemap.xml
