@@ -195,13 +195,6 @@
     mask-image: radial-gradient(ellipse at center, black 20%, transparent 80%);
   }
 
-  #water-canvas {
-    position: absolute; inset: 0;
-    width: 100%; height: 100%;
-    pointer-events: none;
-    z-index: 1;
-  }
-
   #inicio::after {
     content: '';
     position: absolute;
@@ -942,6 +935,31 @@
     .social-links { flex-direction: column; }
     .testimonios-grid { grid-template-columns: 1fr; }
   }
+
+  /* TRANSICIONES ENTRE SECCIONES */
+  #sobre-mi    { position: relative; }
+  #servicios   { position: relative; }
+  #eventos     { position: relative; }
+  #galeria     { position: relative; }
+  #testimonios { position: relative; }
+
+  #sobre-mi::after,
+  #servicios::after,
+  #eventos::after,
+  #galeria::after,
+  #testimonios::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 160px;
+    pointer-events: none;
+    z-index: 10;
+  }
+  #sobre-mi::after    { background: linear-gradient(to bottom, transparent, #050d1a); }
+  #servicios::after   { background: linear-gradient(to bottom, transparent, #0a1628); }
+  #eventos::after     { background: linear-gradient(to bottom, transparent, #050d1a); }
+  #galeria::after     { background: linear-gradient(to bottom, transparent, #050d1a); }
+  #testimonios::after { background: linear-gradient(to bottom, transparent, #0a1628); }
 </style>
 </head>
 <body>
@@ -971,7 +989,6 @@
 <section id="inicio">
   <div class="hero-bg"></div>
   <div class="hero-lines"></div>
-  <canvas id="water-canvas"></canvas>
   <div class="hero-content">
     <div class="hero-badge">Coach Sergio Ordóñez · HydroElite</div>
     <h1 class="hero-title">
@@ -1388,91 +1405,6 @@ navLinks.querySelectorAll('a').forEach(link => {
     navLinks.classList.remove('open');
   });
 });
-
-// WATER RIPPLES — ondas expansivas tipo piscina
-(function() {
-  const isMobile = window.matchMedia('(max-width: 900px)').matches;
-  if (isMobile) return;
-
-  const canvas = document.getElementById('water-canvas');
-  const ctx = canvas.getContext('2d');
-  let W, H;
-
-  function resize() {
-    W = canvas.width = canvas.offsetWidth;
-    H = canvas.height = canvas.offsetHeight;
-  }
-  resize();
-  window.addEventListener('resize', resize);
-
-  // Paleta: azules muy sutiles del tema
-  const colors = [
-    '30,127,216',
-    '77,184,255',
-    '20,100,180',
-    '110,210,255',
-  ];
-
-  // Focos de ondas — cada uno emite anillos a intervalos
-  const NUM_SOURCES = 7;
-  const sources = Array.from({ length: NUM_SOURCES }, () => ({
-    x: (0.05 + Math.random() * 0.9),
-    y: (0.05 + Math.random() * 0.9),
-    rings: [],
-    countdown: Math.random() * 100,
-    interval: 70 + Math.random() * 140,
-    color: colors[Math.floor(Math.random() * colors.length)],
-    maxRadius: 0.12 + Math.random() * 0.18, // radio máximo normalizado
-    speed: 0.0008 + Math.random() * 0.0008,
-  }));
-
-  function animate() {
-    ctx.clearRect(0, 0, W, H);
-
-    sources.forEach(src => {
-      // Cuenta atrás para emitir nuevo anillo
-      src.countdown--;
-      if (src.countdown <= 0) {
-        src.rings.push({ r: 0, alpha: 0.22 });
-        src.countdown = src.interval;
-        // Mover levemente el foco para variedad
-        src.x = Math.max(0.05, Math.min(0.95, src.x + (Math.random() - 0.5) * 0.08));
-        src.y = Math.max(0.05, Math.min(0.95, src.y + (Math.random() - 0.5) * 0.06));
-      }
-
-      // Expandir y dibujar cada anillo
-      src.rings = src.rings.filter(ring => ring.alpha > 0.004);
-      src.rings.forEach(ring => {
-        const maxR = src.maxRadius * Math.min(W, H);
-        ring.r += src.speed * Math.min(W, H);
-        // Fade proporcional a cuánto ha expandido
-        ring.alpha = 0.22 * Math.pow(1 - ring.r / maxR, 1.6);
-
-        if (ring.r >= maxR) { ring.alpha = 0; return; }
-
-        const cx = src.x * W;
-        const cy = src.y * H;
-
-        // Anillo exterior difuso
-        ctx.beginPath();
-        ctx.arc(cx, cy, ring.r, 0, Math.PI * 2);
-        ctx.strokeStyle = `rgba(${src.color},${ring.alpha * 0.4})`;
-        ctx.lineWidth = 3.5;
-        ctx.stroke();
-
-        // Anillo interior nítido
-        ctx.beginPath();
-        ctx.arc(cx, cy, ring.r, 0, Math.PI * 2);
-        ctx.strokeStyle = `rgba(${src.color},${ring.alpha})`;
-        ctx.lineWidth = 0.8;
-        ctx.stroke();
-      });
-    });
-
-    requestAnimationFrame(animate);
-  }
-  animate();
-})();
 
 // NAV ACTIVE SECTION — IntersectionObserver
 (function() {
