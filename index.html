@@ -131,10 +131,18 @@
     font-size: 0.82rem;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    transition: color 0.3s;
+    transition: color 0.3s, text-shadow 0.3s;
   }
 
-  .nav-links a:hover { color: var(--text); }
+  .nav-links a:hover {
+    color: var(--blue-light);
+    text-shadow: 0 0 18px rgba(77, 184, 255, 0.55);
+  }
+
+  .nav-links a.nav-active {
+    color: var(--blue-light);
+    text-shadow: 0 0 22px rgba(77, 184, 255, 0.7);
+  }
 
   .nav-cta {
     background: transparent;
@@ -192,6 +200,16 @@
     width: 100%; height: 100%;
     pointer-events: none;
     z-index: 1;
+  }
+
+  #inicio::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 160px;
+    background: linear-gradient(to bottom, transparent, #050d1a);
+    z-index: 3;
+    pointer-events: none;
   }
 
   .hero-content {
@@ -1372,16 +1390,13 @@ navLinks.querySelectorAll('a').forEach(link => {
   });
 });
 
-// WATER PARTICLES
+// WATER FILAMENTS
 (function() {
   const isMobile = window.matchMedia('(max-width: 900px)').matches;
-  if (isMobile) return; // No cargamos en móvil para preservar batería
+  if (isMobile) return;
 
   const canvas = document.getElementById('water-canvas');
   const ctx = canvas.getContext('2d');
-  const COUNT = 90;
-  let scrollVelocity = 0;
-  let lastScrollY = window.scrollY;
 
   function resize() {
     canvas.width = canvas.offsetWidth;
@@ -1390,30 +1405,37 @@ navLinks.querySelectorAll('a').forEach(link => {
   resize();
   window.addEventListener('resize', resize);
 
+  let scrollVelocity = 0;
+  let lastScrollY = window.scrollY;
   window.addEventListener('scroll', () => {
-    const current = window.scrollY;
-    scrollVelocity = Math.min((current - lastScrollY) * 0.4, 6);
-    lastScrollY = current;
+    scrollVelocity = Math.min((window.scrollY - lastScrollY) * 0.5, 8);
+    lastScrollY = window.scrollY;
   });
 
-  // Paleta: azules del tema HydroElite
-  const colors = [
-    [30, 127, 216],   // --blue
-    [77, 184, 255],   // azul claro
-    [100, 200, 255],  // celeste
-    [20, 90, 160],    // azul profundo
+  // Colores azules del tema
+  const palette = [
+    [30, 127, 216],
+    [77, 184, 255],
+    [20, 90, 160],
+    [100, 210, 255],
   ];
 
-  const particles = Array.from({ length: COUNT }, () => {
-    const [r, g, b] = colors[Math.floor(Math.random() * colors.length)];
+  // Cada filamento es una cadena de puntos de control que se mueve como una corriente
+  const COUNT = 28;
+  const SEGMENTS = 8; // puntos por filamento
+
+  const filaments = Array.from({ length: COUNT }, () => {
+    const [r, g, b] = palette[Math.floor(Math.random() * palette.length)];
     return {
-      x: Math.random(),
-      y: Math.random(),
-      r: 0.8 + Math.random() * 2.2,
-      speed: 0.00012 + Math.random() * 0.00022,
+      x: Math.random(),          // posición X normalizada (0-1)
+      y: Math.random(),          // posición Y normalizada (0-1)
+      speed: 0.00015 + Math.random() * 0.00025,
+      length: 0.06 + Math.random() * 0.10,  // longitud normalizada
+      amplitude: 0.012 + Math.random() * 0.022,
       phase: Math.random() * Math.PI * 2,
-      amplitude: 0.008 + Math.random() * 0.018,
-      opacity: 0.12 + Math.random() * 0.35,
+      phaseSpeed: 0.006 + Math.random() * 0.010,
+      width: 0.4 + Math.random() * 0.9,
+      opacity: 0.07 + Math.random() * 0.18,
       color: `${r},${g},${b}`,
     };
   });
@@ -1422,45 +1444,89 @@ navLinks.querySelectorAll('a').forEach(link => {
   function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     frame++;
+    scrollVelocity *= 0.9;
 
-    // Decaimiento suave de la velocidad del scroll
-    scrollVelocity *= 0.88;
+    const W = canvas.width;
+    const H = canvas.height;
 
-    particles.forEach(p => {
-      // Movimiento vertical (sube suavemente + aceleración por scroll)
-      p.y -= p.speed + scrollVelocity * 0.0003;
+    filaments.forEach(f => {
+      // El filamento sube
+      f.y -= f.speed + scrollVelocity * 0.00025;
+      f.phase += f.phaseSpeed;
+      if (f.y < -f.length - 0.05) f.y = 1.05;
 
-      // Oscilación horizontal tipo ola
-      const xOffset = Math.sin(frame * 0.008 + p.phase) * p.amplitude;
+      // Construir puntos del filamento (de cola a cabeza)
+      const points = [];
+      for (let i = 0; i <= SEGMENTS; i++) {
+        const t = i / SEGMENTS;
+        const py = (f.y + f.length * t) * H;
+        // Oscilación sinusoidal en X — más pronunciada en la cabeza
+        const wave = Math.sin(f.phase + t * Math.PI * 1.8) * f.amplitude * t;
+        const px = (f.x + wave) * W;
+        points.push({ x: px, y: py });
+      }
 
-      // Si sale por arriba, reaparece por abajo
-      if (p.y < -0.02) p.y = 1.02;
+      // Dibujar como path con gradiente de opacidad (cola transparente, cabeza visible)
+      for (let i = 0; i < points.length - 1; i++) {
+        const t = i / (points.length - 1);
+        const alpha = f.opacity * t * t; // cuadrático: transparente en cola, visible en cabeza
+        const grd = ctx.createLinearGradient(
+          points[i].x, points[i].y,
+          points[i+1].x, points[i+1].y
+        );
+        grd.addColorStop(0, `rgba(${f.color},${alpha})`);
+        grd.addColorStop(1, `rgba(${f.color},${alpha + f.opacity * 0.15})`);
 
-      const px = (p.x + xOffset) * canvas.width;
-      const py = p.y * canvas.height;
+        ctx.beginPath();
+        ctx.moveTo(points[i].x, points[i].y);
+        ctx.lineTo(points[i+1].x, points[i+1].y);
+        ctx.strokeStyle = grd;
+        ctx.lineWidth = f.width;
+        ctx.lineCap = 'round';
+        ctx.stroke();
+      }
 
-      // Pulso suave de opacidad
-      const pulse = 0.7 + 0.3 * Math.sin(frame * 0.02 + p.phase);
-      const alpha = p.opacity * pulse;
-
-      // Halo difuso exterior
-      const grd = ctx.createRadialGradient(px, py, 0, px, py, p.r * 3.5);
-      grd.addColorStop(0, `rgba(${p.color},${alpha})`);
-      grd.addColorStop(1, `rgba(${p.color},0)`);
+      // Pequeño destello en la cabeza del filamento
+      const head = points[points.length - 1];
+      const glowR = ctx.createRadialGradient(head.x, head.y, 0, head.x, head.y, 4);
+      glowR.addColorStop(0, `rgba(${f.color},${f.opacity * 1.4})`);
+      glowR.addColorStop(1, `rgba(${f.color},0)`);
       ctx.beginPath();
-      ctx.arc(px, py, p.r * 3.5, 0, Math.PI * 2);
-      ctx.fillStyle = grd;
-      ctx.fill();
-
-      // Núcleo brillante
-      ctx.beginPath();
-      ctx.arc(px, py, p.r, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(${p.color},${Math.min(alpha * 1.6, 1)})`;
+      ctx.arc(head.x, head.y, 4, 0, Math.PI * 2);
+      ctx.fillStyle = glowR;
       ctx.fill();
     });
 
     requestAnimationFrame(animate);
   }
   animate();
+})();
+
+// NAV ACTIVE SECTION — IntersectionObserver
+(function() {
+  const sections = ['inicio','sobre-mi','servicios','eventos','galeria','contacto'];
+  const navLinks = {};
+  sections.forEach(id => {
+    const link = document.querySelector(`.nav-links a[href="#${id}"]`);
+    if (link) navLinks[id] = link;
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const id = entry.target.id;
+      if (navLinks[id]) {
+        if (entry.isIntersecting) {
+          // Quitar active de todos
+          Object.values(navLinks).forEach(l => l.classList.remove('nav-active'));
+          navLinks[id].classList.add('nav-active');
+        }
+      }
+    });
+  }, { threshold: 0.3 });
+
+  sections.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) observer.observe(el);
+  });
 })();
 </script>
