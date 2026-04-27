@@ -206,8 +206,8 @@
     content: '';
     position: absolute;
     bottom: 0; left: 0; right: 0;
-    height: 160px;
-    background: linear-gradient(to bottom, transparent, #050d1a);
+    height: 260px;
+    background: linear-gradient(to bottom, transparent 0%, rgba(10,22,40,0.6) 50%, #0a1628 100%);
     z-index: 3;
     pointer-events: none;
   }
@@ -356,7 +356,6 @@
   /* SOBRE MÍ */
   #sobre-mi {
     background: var(--bg2);
-    border-top: 1px solid var(--border);
     border-bottom: 1px solid var(--border);
   }
 
@@ -1390,111 +1389,84 @@ navLinks.querySelectorAll('a').forEach(link => {
   });
 });
 
-// WATER FILAMENTS
+// WATER RIPPLES — ondas expansivas tipo piscina
 (function() {
   const isMobile = window.matchMedia('(max-width: 900px)').matches;
   if (isMobile) return;
 
   const canvas = document.getElementById('water-canvas');
   const ctx = canvas.getContext('2d');
+  let W, H;
 
   function resize() {
-    canvas.width = canvas.offsetWidth;
-    canvas.height = canvas.offsetHeight;
+    W = canvas.width = canvas.offsetWidth;
+    H = canvas.height = canvas.offsetHeight;
   }
   resize();
   window.addEventListener('resize', resize);
 
-  let scrollVelocity = 0;
-  let lastScrollY = window.scrollY;
-  window.addEventListener('scroll', () => {
-    scrollVelocity = Math.min((window.scrollY - lastScrollY) * 0.5, 8);
-    lastScrollY = window.scrollY;
-  });
-
-  // Colores azules del tema
-  const palette = [
-    [30, 127, 216],
-    [77, 184, 255],
-    [20, 90, 160],
-    [100, 210, 255],
+  // Paleta: azules muy sutiles del tema
+  const colors = [
+    '30,127,216',
+    '77,184,255',
+    '20,100,180',
+    '110,210,255',
   ];
 
-  // Cada filamento es una cadena de puntos de control que se mueve como una corriente
-  const COUNT = 28;
-  const SEGMENTS = 8; // puntos por filamento
+  // Focos de ondas — cada uno emite anillos a intervalos
+  const NUM_SOURCES = 7;
+  const sources = Array.from({ length: NUM_SOURCES }, () => ({
+    x: (0.05 + Math.random() * 0.9),
+    y: (0.05 + Math.random() * 0.9),
+    rings: [],
+    countdown: Math.random() * 100,
+    interval: 70 + Math.random() * 140,
+    color: colors[Math.floor(Math.random() * colors.length)],
+    maxRadius: 0.12 + Math.random() * 0.18, // radio máximo normalizado
+    speed: 0.0008 + Math.random() * 0.0008,
+  }));
 
-  const filaments = Array.from({ length: COUNT }, () => {
-    const [r, g, b] = palette[Math.floor(Math.random() * palette.length)];
-    return {
-      x: Math.random(),          // posición X normalizada (0-1)
-      y: Math.random(),          // posición Y normalizada (0-1)
-      speed: 0.00015 + Math.random() * 0.00025,
-      length: 0.06 + Math.random() * 0.10,  // longitud normalizada
-      amplitude: 0.012 + Math.random() * 0.022,
-      phase: Math.random() * Math.PI * 2,
-      phaseSpeed: 0.006 + Math.random() * 0.010,
-      width: 0.4 + Math.random() * 0.9,
-      opacity: 0.07 + Math.random() * 0.18,
-      color: `${r},${g},${b}`,
-    };
-  });
-
-  let frame = 0;
   function animate() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    frame++;
-    scrollVelocity *= 0.9;
+    ctx.clearRect(0, 0, W, H);
 
-    const W = canvas.width;
-    const H = canvas.height;
-
-    filaments.forEach(f => {
-      // El filamento sube
-      f.y -= f.speed + scrollVelocity * 0.00025;
-      f.phase += f.phaseSpeed;
-      if (f.y < -f.length - 0.05) f.y = 1.05;
-
-      // Construir puntos del filamento (de cola a cabeza)
-      const points = [];
-      for (let i = 0; i <= SEGMENTS; i++) {
-        const t = i / SEGMENTS;
-        const py = (f.y + f.length * t) * H;
-        // Oscilación sinusoidal en X — más pronunciada en la cabeza
-        const wave = Math.sin(f.phase + t * Math.PI * 1.8) * f.amplitude * t;
-        const px = (f.x + wave) * W;
-        points.push({ x: px, y: py });
+    sources.forEach(src => {
+      // Cuenta atrás para emitir nuevo anillo
+      src.countdown--;
+      if (src.countdown <= 0) {
+        src.rings.push({ r: 0, alpha: 0.22 });
+        src.countdown = src.interval;
+        // Mover levemente el foco para variedad
+        src.x = Math.max(0.05, Math.min(0.95, src.x + (Math.random() - 0.5) * 0.08));
+        src.y = Math.max(0.05, Math.min(0.95, src.y + (Math.random() - 0.5) * 0.06));
       }
 
-      // Dibujar como path con gradiente de opacidad (cola transparente, cabeza visible)
-      for (let i = 0; i < points.length - 1; i++) {
-        const t = i / (points.length - 1);
-        const alpha = f.opacity * t * t; // cuadrático: transparente en cola, visible en cabeza
-        const grd = ctx.createLinearGradient(
-          points[i].x, points[i].y,
-          points[i+1].x, points[i+1].y
-        );
-        grd.addColorStop(0, `rgba(${f.color},${alpha})`);
-        grd.addColorStop(1, `rgba(${f.color},${alpha + f.opacity * 0.15})`);
+      // Expandir y dibujar cada anillo
+      src.rings = src.rings.filter(ring => ring.alpha > 0.004);
+      src.rings.forEach(ring => {
+        const maxR = src.maxRadius * Math.min(W, H);
+        ring.r += src.speed * Math.min(W, H);
+        // Fade proporcional a cuánto ha expandido
+        ring.alpha = 0.22 * Math.pow(1 - ring.r / maxR, 1.6);
 
+        if (ring.r >= maxR) { ring.alpha = 0; return; }
+
+        const cx = src.x * W;
+        const cy = src.y * H;
+
+        // Anillo exterior difuso
         ctx.beginPath();
-        ctx.moveTo(points[i].x, points[i].y);
-        ctx.lineTo(points[i+1].x, points[i+1].y);
-        ctx.strokeStyle = grd;
-        ctx.lineWidth = f.width;
-        ctx.lineCap = 'round';
+        ctx.arc(cx, cy, ring.r, 0, Math.PI * 2);
+        ctx.strokeStyle = `rgba(${src.color},${ring.alpha * 0.4})`;
+        ctx.lineWidth = 3.5;
         ctx.stroke();
-      }
 
-      // Pequeño destello en la cabeza del filamento
-      const head = points[points.length - 1];
-      const glowR = ctx.createRadialGradient(head.x, head.y, 0, head.x, head.y, 4);
-      glowR.addColorStop(0, `rgba(${f.color},${f.opacity * 1.4})`);
-      glowR.addColorStop(1, `rgba(${f.color},0)`);
-      ctx.beginPath();
-      ctx.arc(head.x, head.y, 4, 0, Math.PI * 2);
-      ctx.fillStyle = glowR;
-      ctx.fill();
+        // Anillo interior nítido
+        ctx.beginPath();
+        ctx.arc(cx, cy, ring.r, 0, Math.PI * 2);
+        ctx.strokeStyle = `rgba(${src.color},${ring.alpha})`;
+        ctx.lineWidth = 0.8;
+        ctx.stroke();
+      });
     });
 
     requestAnimationFrame(animate);
