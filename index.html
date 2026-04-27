@@ -357,12 +357,6 @@
   #sobre-mi {
     background: var(--bg2);
     border-bottom: 1px solid var(--border);
-    position: relative;
-  }
-  #sobre-mi::after {
-    content: ''; position: absolute; bottom: 0; left: 0; right: 0;
-    height: 180px; pointer-events: none; z-index: 10;
-    background: linear-gradient(to bottom, transparent, #050d1a);
   }
 
   .about-grid {
@@ -428,12 +422,7 @@
   }
 
   /* SERVICIOS */
-  #servicios { position: relative; }
-  #servicios::after {
-    content: ''; position: absolute; bottom: 0; left: 0; right: 0;
-    height: 180px; pointer-events: none; z-index: 10;
-    background: linear-gradient(to bottom, transparent, #0a1628);
-  }
+  #servicios { }
 
   .services-inner { max-width: 1200px; margin: 0 auto; }
 
@@ -513,12 +502,8 @@
   /* EVENTOS */
   #eventos {
     background: var(--bg2);
-    position: relative;
-  }
-  #eventos::after {
-    content: ''; position: absolute; bottom: 0; left: 0; right: 0;
-    height: 180px; pointer-events: none; z-index: 10;
-    background: linear-gradient(to bottom, transparent, #050d1a);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
   }
 
   .events-wrap { max-width: 900px; margin: 0 auto; }
@@ -593,12 +578,7 @@
   .event-badge.full { border-color: var(--muted); color: var(--muted); }
 
   /* GALERÍA */
-  #galeria { background: var(--bg); position: relative; }
-  #galeria::after {
-    content: ''; position: absolute; bottom: 0; left: 0; right: 0;
-    height: 140px; pointer-events: none; z-index: 10;
-    background: linear-gradient(to bottom, transparent, #050d1a);
-  }
+  #galeria { background: var(--bg); }
 
   .gallery-header { margin-bottom: 3.5rem; }
 
@@ -758,13 +738,7 @@
   /* TESTIMONIOS */
   #testimonios {
     background: var(--bg);
-    position: relative;
-  }
-  #testimonios::after {
-    content: ''; position: absolute; bottom: 0; left: 0; right: 0;
-    height: 180px; pointer-events: none; z-index: 10;
-    background: linear-gradient(to bottom, transparent, #0a1628);
-  }
+    border-top: 1px solid var(--border);
   }
 
   .testimonios-grid {
@@ -1415,7 +1389,7 @@ navLinks.querySelectorAll('a').forEach(link => {
   });
 });
 
-// WATER STREAMS — chorros fluyendo de izquierda a derecha
+// WATER RIPPLES — ondas expansivas tipo piscina
 (function() {
   const isMobile = window.matchMedia('(max-width: 900px)').matches;
   if (isMobile) return;
@@ -1427,114 +1401,74 @@ navLinks.querySelectorAll('a').forEach(link => {
   function resize() {
     W = canvas.width = canvas.offsetWidth;
     H = canvas.height = canvas.offsetHeight;
-    initStreams();
   }
-
-  const palette = ['30,127,216','77,184,255','20,100,180','100,210,255','50,160,230'];
-  const NUM_STREAMS = 8;
-  const PARTICLES_PER = 10;
-  let streams = [];
-
-  function bezierPoint(p0, p1, p2, p3, t) {
-    const mt = 1 - t;
-    return {
-      x: mt*mt*mt*p0.x + 3*mt*mt*t*p1.x + 3*mt*t*t*p2.x + t*t*t*p3.x,
-      y: mt*mt*mt*p0.y + 3*mt*mt*t*p1.y + 3*mt*t*t*p2.y + t*t*t*p3.y,
-    };
-  }
-
-  function initStreams() {
-    streams = Array.from({ length: NUM_STREAMS }, (_, i) => {
-      // Distribuir verticalmente con algo de variación aleatoria
-      const baseY = (i + 0.5) / NUM_STREAMS;
-      const jitter = (Math.random() - 0.5) * 0.12;
-      const y = Math.max(0.05, Math.min(0.95, baseY + jitter));
-
-      // Curva bezier natural: arranca izquierda, ondula y sale derecha
-      const p0 = { x: -0.08, y: y + (Math.random() - 0.5) * 0.06 };
-      const p1 = { x: 0.25 + Math.random() * 0.15, y: y + (Math.random() - 0.5) * 0.18 };
-      const p2 = { x: 0.60 + Math.random() * 0.15, y: y + (Math.random() - 0.5) * 0.18 };
-      const p3 = { x: 1.08, y: y + (Math.random() - 0.5) * 0.06 };
-
-      const color = palette[i % palette.length];
-      const opacity = 0.10 + Math.random() * 0.16;
-      const speed = 0.0018 + Math.random() * 0.0022;
-      const trailLen = 0.06 + Math.random() * 0.08;
-
-      // Partículas escalonadas a lo largo del chorro
-      const particles = Array.from({ length: PARTICLES_PER }, (_, j) => ({
-        t: j / PARTICLES_PER,
-      }));
-
-      return { p0, p1, p2, p3, color, opacity, speed, trailLen, particles };
-    });
-  }
-
   resize();
   window.addEventListener('resize', resize);
 
-  function drawStream(s) {
-    // Línea guía muy tenue (el cauce del agua)
-    ctx.beginPath();
-    const steps = 40;
-    for (let i = 0; i <= steps; i++) {
-      const pt = bezierPoint(s.p0, s.p1, s.p2, s.p3, i / steps);
-      i === 0 ? ctx.moveTo(pt.x * W, pt.y * H) : ctx.lineTo(pt.x * W, pt.y * H);
-    }
-    ctx.strokeStyle = `rgba(${s.color},${s.opacity * 0.18})`;
-    ctx.lineWidth = 0.6;
-    ctx.stroke();
+  // Paleta: azules muy sutiles del tema
+  const colors = [
+    '30,127,216',
+    '77,184,255',
+    '20,100,180',
+    '110,210,255',
+  ];
 
-    // Partículas-estela
-    s.particles.forEach(p => {
-      p.t += s.speed;
-      if (p.t > 1.15) p.t -= 1.15;
-
-      const t = p.t % 1;
-      const tStart = Math.max(0, t - s.trailLen);
-
-      if (t < 0.01 || tStart >= t) return;
-
-      // Dibujar la estela como línea que se desvanece en la cola
-      const trailSteps = 12;
-      ctx.beginPath();
-      for (let i = 0; i <= trailSteps; i++) {
-        const tSample = tStart + (t - tStart) * (i / trailSteps);
-        const pt = bezierPoint(s.p0, s.p1, s.p2, s.p3, tSample);
-        i === 0 ? ctx.moveTo(pt.x * W, pt.y * H) : ctx.lineTo(pt.x * W, pt.y * H);
-      }
-
-      // Gradiente a lo largo de la estela: cola transparente → cabeza visible
-      const ptTail = bezierPoint(s.p0, s.p1, s.p2, s.p3, tStart);
-      const ptHead = bezierPoint(s.p0, s.p1, s.p2, s.p3, t);
-      const grad = ctx.createLinearGradient(
-        ptTail.x * W, ptTail.y * H,
-        ptHead.x * W, ptHead.y * H
-      );
-      grad.addColorStop(0, `rgba(${s.color},0)`);
-      grad.addColorStop(0.6, `rgba(${s.color},${s.opacity * 0.5})`);
-      grad.addColorStop(1, `rgba(${s.color},${s.opacity})`);
-
-      ctx.strokeStyle = grad;
-      ctx.lineWidth = 1.2 + s.opacity * 4;
-      ctx.lineCap = 'round';
-      ctx.stroke();
-
-      // Destello en la cabeza del chorro
-      const hx = ptHead.x * W, hy = ptHead.y * H;
-      const grd = ctx.createRadialGradient(hx, hy, 0, hx, hy, 5);
-      grd.addColorStop(0, `rgba(${s.color},${s.opacity * 1.2})`);
-      grd.addColorStop(1, `rgba(${s.color},0)`);
-      ctx.beginPath();
-      ctx.arc(hx, hy, 5, 0, Math.PI * 2);
-      ctx.fillStyle = grd;
-      ctx.fill();
-    });
-  }
+  // Focos de ondas — cada uno emite anillos a intervalos
+  const NUM_SOURCES = 7;
+  const sources = Array.from({ length: NUM_SOURCES }, () => ({
+    x: (0.05 + Math.random() * 0.9),
+    y: (0.05 + Math.random() * 0.9),
+    rings: [],
+    countdown: Math.random() * 100,
+    interval: 70 + Math.random() * 140,
+    color: colors[Math.floor(Math.random() * colors.length)],
+    maxRadius: 0.12 + Math.random() * 0.18, // radio máximo normalizado
+    speed: 0.0008 + Math.random() * 0.0008,
+  }));
 
   function animate() {
     ctx.clearRect(0, 0, W, H);
-    streams.forEach(drawStream);
+
+    sources.forEach(src => {
+      // Cuenta atrás para emitir nuevo anillo
+      src.countdown--;
+      if (src.countdown <= 0) {
+        src.rings.push({ r: 0, alpha: 0.22 });
+        src.countdown = src.interval;
+        // Mover levemente el foco para variedad
+        src.x = Math.max(0.05, Math.min(0.95, src.x + (Math.random() - 0.5) * 0.08));
+        src.y = Math.max(0.05, Math.min(0.95, src.y + (Math.random() - 0.5) * 0.06));
+      }
+
+      // Expandir y dibujar cada anillo
+      src.rings = src.rings.filter(ring => ring.alpha > 0.004);
+      src.rings.forEach(ring => {
+        const maxR = src.maxRadius * Math.min(W, H);
+        ring.r += src.speed * Math.min(W, H);
+        // Fade proporcional a cuánto ha expandido
+        ring.alpha = 0.22 * Math.pow(1 - ring.r / maxR, 1.6);
+
+        if (ring.r >= maxR) { ring.alpha = 0; return; }
+
+        const cx = src.x * W;
+        const cy = src.y * H;
+
+        // Anillo exterior difuso
+        ctx.beginPath();
+        ctx.arc(cx, cy, ring.r, 0, Math.PI * 2);
+        ctx.strokeStyle = `rgba(${src.color},${ring.alpha * 0.4})`;
+        ctx.lineWidth = 3.5;
+        ctx.stroke();
+
+        // Anillo interior nítido
+        ctx.beginPath();
+        ctx.arc(cx, cy, ring.r, 0, Math.PI * 2);
+        ctx.strokeStyle = `rgba(${src.color},${ring.alpha})`;
+        ctx.lineWidth = 0.8;
+        ctx.stroke();
+      });
+    });
+
     requestAnimationFrame(animate);
   }
   animate();
