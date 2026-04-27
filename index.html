@@ -187,6 +187,13 @@
     mask-image: radial-gradient(ellipse at center, black 20%, transparent 80%);
   }
 
+  #water-canvas {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 1;
+  }
+
   .hero-content {
     position: relative; z-index: 2;
     max-width: 700px;
@@ -947,6 +954,7 @@
 <section id="inicio">
   <div class="hero-bg"></div>
   <div class="hero-lines"></div>
+  <canvas id="water-canvas"></canvas>
   <div class="hero-content">
     <div class="hero-badge">Coach Sergio Ordóñez · HydroElite</div>
     <h1 class="hero-title">
@@ -1363,4 +1371,96 @@ navLinks.querySelectorAll('a').forEach(link => {
     navLinks.classList.remove('open');
   });
 });
+
+// WATER PARTICLES
+(function() {
+  const isMobile = window.matchMedia('(max-width: 900px)').matches;
+  if (isMobile) return; // No cargamos en móvil para preservar batería
+
+  const canvas = document.getElementById('water-canvas');
+  const ctx = canvas.getContext('2d');
+  const COUNT = 90;
+  let scrollVelocity = 0;
+  let lastScrollY = window.scrollY;
+
+  function resize() {
+    canvas.width = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  window.addEventListener('scroll', () => {
+    const current = window.scrollY;
+    scrollVelocity = Math.min((current - lastScrollY) * 0.4, 6);
+    lastScrollY = current;
+  });
+
+  // Paleta: azules del tema HydroElite
+  const colors = [
+    [30, 127, 216],   // --blue
+    [77, 184, 255],   // azul claro
+    [100, 200, 255],  // celeste
+    [20, 90, 160],    // azul profundo
+  ];
+
+  const particles = Array.from({ length: COUNT }, () => {
+    const [r, g, b] = colors[Math.floor(Math.random() * colors.length)];
+    return {
+      x: Math.random(),
+      y: Math.random(),
+      r: 0.8 + Math.random() * 2.2,
+      speed: 0.00012 + Math.random() * 0.00022,
+      phase: Math.random() * Math.PI * 2,
+      amplitude: 0.008 + Math.random() * 0.018,
+      opacity: 0.12 + Math.random() * 0.35,
+      color: `${r},${g},${b}`,
+    };
+  });
+
+  let frame = 0;
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    frame++;
+
+    // Decaimiento suave de la velocidad del scroll
+    scrollVelocity *= 0.88;
+
+    particles.forEach(p => {
+      // Movimiento vertical (sube suavemente + aceleración por scroll)
+      p.y -= p.speed + scrollVelocity * 0.0003;
+
+      // Oscilación horizontal tipo ola
+      const xOffset = Math.sin(frame * 0.008 + p.phase) * p.amplitude;
+
+      // Si sale por arriba, reaparece por abajo
+      if (p.y < -0.02) p.y = 1.02;
+
+      const px = (p.x + xOffset) * canvas.width;
+      const py = p.y * canvas.height;
+
+      // Pulso suave de opacidad
+      const pulse = 0.7 + 0.3 * Math.sin(frame * 0.02 + p.phase);
+      const alpha = p.opacity * pulse;
+
+      // Halo difuso exterior
+      const grd = ctx.createRadialGradient(px, py, 0, px, py, p.r * 3.5);
+      grd.addColorStop(0, `rgba(${p.color},${alpha})`);
+      grd.addColorStop(1, `rgba(${p.color},0)`);
+      ctx.beginPath();
+      ctx.arc(px, py, p.r * 3.5, 0, Math.PI * 2);
+      ctx.fillStyle = grd;
+      ctx.fill();
+
+      // Núcleo brillante
+      ctx.beginPath();
+      ctx.arc(px, py, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(${p.color},${Math.min(alpha * 1.6, 1)})`;
+      ctx.fill();
+    });
+
+    requestAnimationFrame(animate);
+  }
+  animate();
+})();
 </script>
