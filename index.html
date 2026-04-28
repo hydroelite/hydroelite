@@ -924,6 +924,8 @@
     .contact-form { align-items: stretch !important; }
     .contact-form .btn-primary { text-align: center; width: 100%; }
     footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem 1.5rem; }
+    .footer-inner-grid { grid-template-columns: 1fr !important; gap: 2rem !important; }
+    .footer-bottom-row { flex-direction: column; text-align: center; gap: 0.8rem; }
     #galeria { padding-left: 0; padding-right: 0; }
     #galeria .gallery-header { padding-left: 1.5rem; padding-right: 1.5rem; }
   }
@@ -1181,6 +1183,48 @@
       </div>
     </div>
 
+    <div class="testimonio-card fade-up">
+      <span class="testimonio-quote">"</span>
+      <p class="testimonio-text">Tenía pánico al agua en mar abierto desde siempre. Con Sergio trabajamos la técnica y la cabeza a la vez. Seis meses después completé mi primera travesía en la Bahía de Santander. No me lo creo todavía.</p>
+      <div class="testimonio-author">
+        <div class="testimonio-avatar">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <div>
+          <div class="testimonio-name">Ana García</div>
+          <div class="testimonio-profile">Aguas Abiertas · Primera Travesía</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonio-card fade-up">
+      <span class="testimonio-quote">"</span>
+      <p class="testimonio-text">Me hice el análisis biomecánico sin expectativas muy altas y salí alucinado. En 90 minutos Sergio identificó tres errores que llevaba años arrastrando sin saberlo. Lo que más me sorprendió fue la claridad con la que lo explicó y el plan de corrección que me dio.</p>
+      <div class="testimonio-author">
+        <div class="testimonio-avatar">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <div>
+          <div class="testimonio-name">Carlos Mendoza</div>
+          <div class="testimonio-profile">Análisis Biomecánico · Nadador Amateur</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testimonio-card fade-up">
+      <span class="testimonio-quote">"</span>
+      <p class="testimonio-text">Llevo dos años entrenando con Sergio de forma online. La comunicación es constante, los planes están muy bien estructurados y nota que se preocupa de verdad por tu progreso. He bajado más de un minuto en los 1500m desde que empecé con él.</p>
+      <div class="testimonio-author">
+        <div class="testimonio-avatar">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <div>
+          <div class="testimonio-name">Marcos Fernández</div>
+          <div class="testimonio-profile">Entrenamiento Online · Competición Masters</div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -1199,12 +1243,12 @@
 
     <div class="event-item fade-up" style="border-left:2px solid var(--blue);padding-left:1.5rem;margin-left:-1.5rem;">
       <div class="event-date-block" style="border-color:var(--blue);">
-        <span class="event-date-day">25–28 Jun</span>
+        <span class="event-date-day">26 Jun–1 Jul</span>
         <span class="event-date-month">2026</span>
       </div>
       <div>
-        <div class="event-info-name">Swim Camp ProMotion RFEN — Palma de Mallorca</div>
-        <div class="event-info-meta">Palma de Mallorca · Son Hugo · Federación Española de Natación</div>
+        <div class="event-info-name">Campus de Tecnificación HydroElite — Loredo</div>
+        <div class="event-info-meta">Loredo, Cantabria · Campus propio HydroElite · 4ª Edición</div>
       </div>
       <span class="event-badge soon">Próximo</span>
     </div>
@@ -1259,17 +1303,6 @@
       <span class="event-badge full">Completado</span>
     </div>
 
-    <div class="event-item fade-up" style="opacity:0.6;">
-      <div class="event-date-block">
-        <span class="event-date-day">—</span>
-        <span class="event-date-month">2026</span>
-      </div>
-      <div>
-        <div class="event-info-name">Próximos eventos propios — En preparación</div>
-        <div class="event-info-meta">Clínics, campus y eventos propios de HydroElite · Fechas por confirmar</div>
-      </div>
-      <span class="event-badge soon">Próximamente</span>
-    </div>
   </div>
 </section>
 
@@ -1284,43 +1317,43 @@
     <!-- FILA 1: australia_grupo (muy horizontal) ocupa 8 cols y baja altura | biomec (vertical) ocupa 4 cols con más altura -->
     <div style="grid-column:span 8;position:relative;overflow:hidden;background:#111620;height:380px;" class="gallery-item">
       <img loading="lazy" src="imgs/australia_grupo.jpg" alt="Grupo élite Sunshine Coast Australia" class="gallery-grupo" style="width:100%;height:100%;object-fit:cover;object-position:center 20%;transform:scale(1.15) translateX(-4%);transform-origin:center top;display:block;transition:transform 0.5s;">
-      <div class="gallery-caption">Grupo Élite · Sunshine Coast, Australia</div>
+      <div class="gallery-caption">Entrenamiento con medallistas olímpicos y récords del mundo · Sunshine Coast, Australia</div>
     </div>
     <div style="grid-column:span 4;position:relative;overflow:hidden;background:#111620;height:380px;" class="gallery-item">
       <img loading="lazy" src="imgs/biomec.jpg" alt="Análisis biomecánico natación Sierra Nevada con Coach Sergio Ordóñez" style="width:100%;height:100%;object-fit:cover;object-position:center 60%;display:block;transition:transform 0.5s;">
-      <div class="gallery-caption">Análisis Biomecánico · Sierra Nevada</div>
+      <div class="gallery-caption">Análisis Biomecánico · Campus Federación Española de Natación</div>
     </div>
 
     <!-- FILA 2: tenerife, peter_santi, australia_mia — las 3 verticales a igual altura -->
     <div style="grid-column:span 4;position:relative;overflow:hidden;background:#111620;height:340px;" class="gallery-item">
       <img loading="lazy" src="imgs/tenerife.jpg" alt="Entrenamiento natación Tenerife Top Training con Sergio Ordóñez HydroElite" style="width:100%;height:100%;object-fit:cover;object-position:center 15%;display:block;transition:transform 0.5s;">
-      <div class="gallery-caption">Tenerife Top Training</div>
+      <div class="gallery-caption">Colaboración & Contenido · Tenerife Top Training</div>
     </div>
     <div style="grid-column:span 4;position:relative;overflow:hidden;background:#111620;height:340px;" class="gallery-item">
       <img loading="lazy" src="imgs/peter_santi.jpg" alt="Con Peter y Santiago Veiga" style="width:100%;height:100%;object-fit:cover;object-position:center 35%;display:block;transition:transform 0.5s;">
-      <div class="gallery-caption">Con Peter & Santiago Veiga · RFEN</div>
+      <div class="gallery-caption">Con Santiago Veiga (Dir. Técnico RFEN) y Peter (Resp. GES Madrid) · Amigos y referentes</div>
     </div>
     <div style="grid-column:span 4;position:relative;overflow:hidden;background:#111620;height:340px;" class="gallery-item">
       <img loading="lazy" src="imgs/australia_mia.jpg" alt="Con Mia O'Leary Australia" style="width:100%;height:100%;object-fit:cover;object-position:center 30%;display:block;transition:transform 0.5s;">
-      <div class="gallery-caption">Con Mia O'Leary · Gold Coast, Australia</div>
+      <div class="gallery-caption">Con Mia O'Leary · Bracista australiana con objetivo Los Ángeles 2028</div>
     </div>
 
     <!-- FILA 3: revilla y alberto (muy verticales) en celdas altas | buitrago (horizontal) ocupa más ancho -->
     <div style="grid-column:span 3;position:relative;overflow:hidden;background:#111620;height:320px;" class="gallery-item">
       <img loading="lazy" src="imgs/revilla.jpg" alt="Con Miguel Ángel Revilla" style="width:100%;height:100%;object-fit:cover;object-position:center 15%;display:block;transition:transform 0.5s;">
-      <div class="gallery-caption">Con Miguel Ángel Revilla · Cantabria</div>
+      <div class="gallery-caption">Con Miguel Ángel Revilla · Reto Aguas Abiertas Cantabria</div>
     </div>
     <div style="grid-column:span 3;position:relative;overflow:hidden;background:#111620;height:320px;" class="gallery-item">
       <img loading="lazy" src="imgs/alberto.jpg" alt="Con Alberto Lorente Cantabria" style="width:100%;height:100%;object-fit:cover;object-position:center 15%;display:block;transition:transform 0.5s;">
-      <div class="gallery-caption">Con Alberto Lorente · Reto Cantabria</div>
+      <div class="gallery-caption">Con Alberto Lorente · Etapa Cantabria — Vuelta a España a Nado</div>
     </div>
     <div style="grid-column:span 6;position:relative;overflow:hidden;background:#111620;height:320px;" class="gallery-item">
       <img loading="lazy" src="imgs/buitrago.jpg" alt="Campus Swim Buitrago RFEN" style="width:100%;height:100%;object-fit:cover;object-position:center 50%;display:block;transition:transform 0.5s;">
-      <div class="gallery-caption">Campus Swim · Buitrago · RFEN & Consejo Superior de Deportes</div>
+      <div class="gallery-caption">Entrenador · Campus Swim RFEN — Buitrago de Lozoya</div>
     </div>
     <div style="grid-column:span 12;position:relative;overflow:hidden;background:#111620;height:360px;" class="gallery-item">
       <img loading="lazy" src="imgs/campus.jpg" alt="Campus de natación Cantabria" style="width:100%;height:100%;object-fit:cover;object-position:center 60%;display:block;transition:transform 0.5s;">
-      <div class="gallery-caption">Campus Tecnificación · Cantabria</div>
+      <div class="gallery-caption">3ª Edición Campus de Tecnificación HydroElite · Club Natación Medio Cudeyo, Cantabria</div>
     </div>
   </div>
 </section>
@@ -1369,9 +1402,65 @@
 </section>
 
 <!-- FOOTER -->
-<footer>
-  <div class="footer-logo">Hydro<span>Elite</span></div>
-  <div class="footer-copy">© 2026 HydroElite · Coach Sergio Ordóñez</div>
+<footer style="display:block;padding:4rem 4rem 2rem;border-top:1px solid var(--border);">
+  <div style="max-width:1200px;margin:0 auto;">
+
+    <!-- Fila superior -->
+    <div style="display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:3rem;padding-bottom:3rem;border-bottom:1px solid var(--border);">
+
+      <!-- Marca + tagline -->
+      <div>
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:1rem;">
+          <img src="imgs/logo_he.png" alt="HydroElite" style="height:36px;width:auto;">
+          <span style="font-family:'Cormorant Garant',serif;font-size:1.3rem;color:var(--text);">Hydro<span style="color:var(--blue);">Elite</span></span>
+        </div>
+        <p style="font-family:'Cormorant Garant',serif;font-size:1.5rem;color:var(--blue-light);font-style:italic;margin-bottom:1rem;line-height:1.3;">Nunca nadarás solo.</p>
+        <p style="font-size:0.82rem;color:var(--muted);line-height:1.7;max-width:280px;">Análisis biomecánico, entrenamiento personalizado, clínics y campus de natación por toda España.</p>
+      </div>
+
+      <!-- Navegación -->
+      <div>
+        <div style="font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);margin-bottom:1.2rem;">Navegación</div>
+        <nav style="display:flex;flex-direction:column;gap:0.7rem;">
+          <a href="#sobre-mi" style="font-size:0.85rem;color:var(--text);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='var(--blue-light)'" onmouseout="this.style.color='var(--text)'">Sobre mí</a>
+          <a href="#servicios" style="font-size:0.85rem;color:var(--text);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='var(--blue-light)'" onmouseout="this.style.color='var(--text)'">Servicios</a>
+          <a href="#eventos" style="font-size:0.85rem;color:var(--text);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='var(--blue-light)'" onmouseout="this.style.color='var(--text)'">Eventos</a>
+          <a href="#galeria" style="font-size:0.85rem;color:var(--text);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='var(--blue-light)'" onmouseout="this.style.color='var(--text)'">Galería</a>
+          <a href="#contacto" style="font-size:0.85rem;color:var(--text);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='var(--blue-light)'" onmouseout="this.style.color='var(--text)'">Contacto</a>
+          <a href="blog/index.html" style="font-size:0.85rem;color:var(--text);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='var(--blue-light)'" onmouseout="this.style.color='var(--text)'">Blog</a>
+        </nav>
+      </div>
+
+      <!-- Redes -->
+      <div>
+        <div style="font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);margin-bottom:1.2rem;">Síguenos</div>
+        <div style="display:flex;flex-direction:column;gap:0.9rem;">
+          <a href="https://www.instagram.com/coachsergiordonez/" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:0.7rem;font-size:0.85rem;color:var(--text);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='var(--blue-light)'" onmouseout="this.style.color='var(--text)'">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            @coachsergiordonez
+          </a>
+          <a href="https://www.instagram.com/hydroelite_es/" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:0.7rem;font-size:0.85rem;color:var(--text);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='var(--blue-light)'" onmouseout="this.style.color='var(--text)'">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            @hydroelite_es
+          </a>
+          <a href="https://www.youtube.com/@coachsergiordonez" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:0.7rem;font-size:0.85rem;color:var(--text);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='var(--blue-light)'" onmouseout="this.style.color='var(--text)'">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
+            @coachsergiordonez
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Fila inferior: copyright + legal -->
+    <div style="display:flex;justify-content:space-between;align-items:center;padding-top:1.5rem;flex-wrap:wrap;gap:1rem;">
+      <div style="font-size:0.75rem;color:var(--muted);">© 2026 HydroElite · Coach Sergio Ordóñez · Todos los derechos reservados</div>
+      <div style="display:flex;gap:1.5rem;">
+        <a href="aviso-legal.html" style="font-size:0.75rem;color:var(--muted);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--muted)'">Aviso Legal</a>
+        <a href="privacidad.html" style="font-size:0.75rem;color:var(--muted);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--muted)'">Política de Privacidad</a>
+      </div>
+    </div>
+
+  </div>
 </footer>
 
 <script>
