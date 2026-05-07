@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El día que el Mar Cantábrico nos puso a prueba — Sergio Ordóñez · HydroElite</title>
+<meta name="description" content="El 21 de abril de 2025 nadé 15 km en el Mar Cantábrico junto a Alberto Lorente y David Mayo. Esto es lo que pasó cuando el mar decidió que once no eran suficientes.">
+<meta name="author" content="Sergio Ordóñez — HydroElite">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="El día que el Mar Cantábrico nos puso a prueba">
+<meta property="og:description" content="El 21 de abril de 2025 nadé 15 km en el Mar Cantábrico junto a Alberto Lorente y David Mayo. Esto es lo que pasó cuando el mar decidió que once no eran suficientes.">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="es_ES">
+<meta property="article:published_time" content="2025-04-21">
+<meta property="article:author" content="Sergio Ordóñez">
+<link rel="icon" type="image/x-icon" href="../imgs/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="../imgs/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../imgs/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../imgs/apple-touch-icon.png">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garant:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #050d1a;
+    --bg2: #0a1628;
+    --bg3: #0f1e35;
+    --text: #f0ede4;
+    --muted: #8a8f9e;
+    --blue: #1e7fd8;
+    --blue-light: #4fa3f0;
+    --blue-dim: rgba(30, 127, 216, 0.12);
+    --gold: #c9a55a;
+    --border: rgba(240, 237, 228, 0.08);
+    --border-blue: rgba(30, 127, 216, 0.3);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.4rem 4rem;
+    background: rgba(7, 9, 15, 0.95);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem;
+    letter-spacing: 0.08em;
+    color: var(--text);
+    text-decoration: none;
+    display: flex; align-items: center; gap: 12px;
+  }
+
+  .nav-logo span { color: var(--blue); }
+
+  .nav-back {
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.3s;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+
+  .nav-back:hover { color: var(--text); }
+
+  /* HERO ARTICLE */
+  .article-hero {
+    min-height: 60vh;
+    display: flex;
+    align-items: flex-end;
+    position: relative;
+    overflow: hidden;
+    padding: 0 4rem 5rem;
+    margin-top: 0;
+  }
+
+  .article-hero-img {
+    position: absolute; inset: 0;
+    background-image: url('../imgs/reto_llegada.jpg');
+    background-size: cover;
+    background-position: center 30%;
+    filter: brightness(0.32);
+  }
+
+  .article-hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, var(--bg) 0%, transparent 60%);
+  }
+
+  .article-hero-content {
+    position: relative; z-index: 2;
+    max-width: 780px;
+  }
+
+  .article-tag {
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 1.2rem;
+    display: block;
+  }
+
+  .article-title {
+    font-family: 'Cormorant Garant', serif;
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
+    font-weight: 300;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+  }
+
+  .article-title em {
+    font-style: italic;
+    color: var(--blue-light);
+  }
+
+  .article-meta {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+
+  .article-meta-dot {
+    width: 3px; height: 3px;
+    background: var(--blue);
+    border-radius: 50%;
+  }
+
+  /* ARTICLE BODY */
+  .article-body {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 5rem 2rem 8rem;
+  }
+
+  .article-body p {
+    font-size: 1.05rem;
+    line-height: 1.95;
+    color: var(--muted);
+    margin-bottom: 1.8rem;
+  }
+
+  .article-body p strong {
+    color: var(--text);
+    font-weight: 400;
+  }
+
+  .article-body p em {
+    color: var(--blue-light);
+    font-style: italic;
+  }
+
+  .article-lead {
+    font-family: 'Cormorant Garant', serif;
+    font-size: 1.35rem !important;
+    font-weight: 300;
+    color: var(--text) !important;
+    line-height: 1.7 !important;
+    margin-bottom: 3rem !important;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .article-pullquote {
+    border-left: 2px solid var(--blue);
+    padding: 1.5rem 2rem;
+    margin: 3rem 0;
+    background: var(--bg2);
+  }
+
+  .article-pullquote p {
+    font-family: 'Cormorant Garant', serif;
+    font-size: 1.3rem !important;
+    font-style: italic;
+    color: var(--text) !important;
+    line-height: 1.6 !important;
+    margin: 0 !important;
+  }
+
+  .article-h2 {
+    font-family: 'Cormorant Garant', serif;
+    font-size: 1.8rem;
+    font-weight: 300;
+    color: var(--text);
+    margin: 3.5rem 0 1.5rem;
+    line-height: 1.2;
+  }
+
+  .article-h2 em {
+    font-style: italic;
+    color: var(--blue-light);
+  }
+
+  .article-img {
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    margin: 3rem 0;
+    border: 1px solid var(--border);
+    display: block;
+  }
+
+  .article-img-caption {
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-top: -2rem;
+    margin-bottom: 3rem;
+    text-align: center;
+  }
+
+  /* CTA */
+  .article-cta {
+    background: var(--bg2);
+    border: 1px solid var(--border-blue);
+    padding: 3rem;
+    text-align: center;
+    margin-top: 5rem;
+  }
+
+  .article-cta-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .article-cta-title {
+    font-family: 'Cormorant Garant', serif;
+    font-size: 1.8rem;
+    font-weight: 300;
+    margin-bottom: 1rem;
+  }
+
+  .article-cta p {
+    color: var(--muted);
+    margin-bottom: 2rem;
+    font-size: 0.95rem !important;
+  }
+
+  .btn-primary {
+    background: var(--blue);
+    color: #fff;
+    padding: 0.9rem 2.2rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border: none; cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s;
+    display: inline-block;
+  }
+
+  .btn-primary:hover { background: var(--blue-light); }
+
+  /* FOOTER */
+  footer {
+    padding: 2.5rem 4rem;
+    border-top: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+
+  .footer-logo {
+    font-family: 'Cormorant Garant', serif;
+    font-size: 1.2rem;
+    color: var(--text);
+  }
+
+  .footer-logo span { color: var(--blue); }
+
+  .footer-copy {
+    font-size: 0.78rem;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+  }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    nav { padding: 1.2rem 1.5rem; }
+    .article-hero { padding: 0 1.5rem 4rem; min-height: 50vh; }
+    .article-body { padding: 3rem 1.5rem 5rem; }
+    .article-pullquote { padding: 1.2rem 1.5rem; margin: 2rem 0; }
+    .article-cta { padding: 2rem 1.5rem; }
+    footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem 1.5rem; }
+  }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "El día que el Mar Cantábrico nos puso a prueba",
+  "description": "El 21 de abril de 2025 nadé 15 km en el Mar Cantábrico junto a Alberto Lorente y David Mayo. Esto es lo que pasó cuando el mar decidió que once no eran suficientes.",
+  "image": "https://hydroelite.github.io/hydroelite/imgs/reto_llegada.jpg",
+  "datePublished": "2025-04-21",
+  "dateModified": "2026-05-07",
+  "author": {
+    "@type": "Person",
+    "name": "Sergio Ordóñez",
+    "url": "https://hydroelite.github.io/hydroelite/",
+    "jobTitle": "Entrenador Superior de Natación — Nivel 3",
+    "sameAs": [
+      "https://www.instagram.com/coachsergiordonez",
+      "https://www.youtube.com/@coachsergiordonez"
+    ]
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "HydroElite",
+    "url": "https://hydroelite.github.io/hydroelite/",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://hydroelite.github.io/hydroelite/imgs/logo_he.png"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://hydroelite.github.io/hydroelite/blog/reto-cantabria.html"
+  },
+  "keywords": "reto natación aguas abiertas, Alberto Lorente vuelta a España nadando, Mar Cantábrico, natación Cantabria, Castro Urdiales Islares, HydroElite, Sergio Ordóñez",
+  "inLanguage": "es",
+  "articleSection": "Crónicas"
+}
+</script>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="../index.html" class="nav-logo">
+    <img src="../imgs/logo_he.png" alt="HydroElite" style="height:44px;width:auto;">
+    Hydro<span>Elite</span>
+  </a>
+  <a href="../index.html" class="nav-back">
+    ← Volver a la web
+  </a>
+</nav>
+
+<!-- HERO -->
+<div class="article-hero">
+  <div class="article-hero-img"></div>
+  <div class="article-hero-overlay"></div>
+  <div class="article-hero-content">
+    <span class="article-tag">Aguas abiertas · Cantabria · Abril 2025</span>
+    <h1 class="article-title">El día que el <em>Mar Cantábrico</em><br>nos puso a prueba</h1>
+    <div class="article-meta">
+      <span>Sergio Ordóñez</span>
+      <div class="article-meta-dot"></div>
+      <span>HydroElite</span>
+      <div class="article-meta-dot"></div>
+      <span>8 min de lectura</span>
+    </div>
+  </div>
+</div>
+
+<!-- BODY -->
+<div class="article-body">
+
+  <p class="article-lead">El mar Cantábrico no perdona. Quien ha nadado en él lo sabe. No es el Mediterráneo de aguas templadas y fondo plano. Es impredecible, frío, y tiene la costumbre de recordarte en todo momento que estás en su terreno. El 21 de abril de 2025 me metí en ese mar con dos personas que no conocía demasiado y salí con dos amigos para toda la vida.</p>
+
+  <h2 class="article-h2">Cómo <em>empezó todo</em></h2>
+
+  <p><strong>Alberto Lorente</strong> llevaba meses nadando la Vuelta a España. Etapa a etapa, costa a costa, convirtiendo uno de los retos de aguas abiertas más ambiciosos que se han hecho en este país en una realidad. Cuando me propuso acompañarle en la etapa de Cantabria, no dudé.</p>
+
+  <p>Se sumó <strong>David Mayo</strong>, nadador de Castro Urdiales acostumbrado a estas aguas. Y yo, que llevo toda la vida metiéndome en el Cantábrico y sé perfectamente lo que implica.</p>
+
+  <p>El reto tenía un propósito claro: <strong>promover la limpieza de playas y océanos</strong>. Mientras nosotros nadábamos, en las playas de salida y llegada se organizaron batidas de recogida de basura dirigidas por <strong>Quique Bolsitas</strong> —profesor de educación física y activista medioambiental— junto a <em>Mi Pueblo Limpio</em>, una asociación cántabra que moviliza a la gente para limpiar el litoral. El reto dentro del reto.</p>
+
+  <h2 class="article-h2">Las semanas <em>antes</em></h2>
+
+  <p>Publicamos el evento en redes y la respuesta superó lo que esperábamos. Pero lo que de verdad marcó un punto de inflexión fue grabar un vídeo con <strong>Miguel Ángel Revilla</strong>, expresidente de Cantabria. Lo compartió en su cuenta, lo respaldó públicamente, y de repente aquello dejó de ser "un reto de tres nadadores" para convertirse en algo por Cantabria.</p>
+
+  <p>El <strong>IES Ricardo Bernardo de Solares</strong> me dejó promocionarlo en sus clases gracias a su directora Chari, un encanto de mujer. Ver la reacción de los chavales, su curiosidad, su energía —eso ya fue una recompensa antes de haber nadado un solo metro.</p>
+
+  <img class="article-img" src="../imgs/reto_cudeyo.jpg" alt="Nadadores del Club Natación Medio Cudeyo que vinieron a apoyar el reto" loading="lazy" style="object-position: center 40%;">
+  <p class="article-img-caption">Los nadadores del CN Medio Cudeyo que se acercaron a apoyarnos · Islares, Cantabria</p>
+
+  <p>El día del evento había más gente de la que esperaba.</p>
+
+  <h2 class="article-h2">Castro Urdiales, <em>por la mañana</em></h2>
+
+  <p>El plan era nadar desde <strong>Castro Urdiales hasta Islares</strong>. Once kilómetros en línea recta. Con buenas condiciones, tres horas de nado aproximadamente.</p>
+
+  <p>Las condiciones no eran buenas.</p>
+
+  <p>Empezamos con el mar razonablemente manejable, pero desde el primer kilómetro quedó claro que íbamos más lentos de lo previsto. El oleaje no era violento, pero tampoco cedía. Cada brazada costaba un poco más de lo que debería.</p>
+
+  <p>A mitad de recorrido, una de las motos de agua que nos escoltaba <strong>se estropeó por las olas</strong>. El barco tuvo que acompañarla hasta el puerto. Nos quedamos con un único barco. Ese barco tampoco pudo volver a salir: el oleaje y la corriente se lo impidieron.</p>
+
+  <div class="article-pullquote">
+    <p>Tres nadadores. Un barco. El Mar Cantábrico abierto delante.</p>
+  </div>
+
+  <h2 class="article-h2">Lo que nadie ve <em>desde la orilla</em></h2>
+
+  <p>Hay momentos en el agua en los que dejas de pensar en el destino y te concentras únicamente en lo que tienes delante: la siguiente ola, la siguiente brazada, el horizonte que no parece acercarse.</p>
+
+  <p>Lo que en papel eran <strong>11 kilómetros se convirtieron en aproximadamente 15</strong>. Las corrientes no negocian.</p>
+
+  <p>El agua estaba fría. El oleaje, constante. El viento, en contra en los peores momentos. Nada que no supiéramos que podía pasar. El Mar Cantábrico no te sorprende si lo conoces —simplemente te exige que estés a la altura.</p>
+
+  <p>Y lo estuvimos.</p>
+
+  <h2 class="article-h2">La <em>llegada</em></h2>
+
+  <img class="article-img" src="../imgs/reto_llegada.jpg" alt="Llegada a Islares con toda la gente apoyando en la orilla — Reto Cantabria abril 2025" loading="lazy" style="aspect-ratio: 9/16; object-position: center 20%; max-height: 600px;">
+  <p class="article-img-caption">La llegada a Islares · Reto Cantabria · 21 de abril de 2025</p>
+
+  <p>Cuando tocamos tierra en Islares, llevábamos horas en el agua. El cuerpo acusaba el frío, el esfuerzo, la concentración sostenida durante todo ese tiempo.</p>
+
+  <p>Y entonces vimos a la gente.</p>
+
+  <p>No sé si alguna vez he agradecido tanto un aplauso. Ver a tanta gente esperando en la orilla, después de todo lo que había pasado en el agua, fue uno de esos momentos que no se olvidan. La hipotermia seguía ahí, el cansancio también. Pero eso ya no importaba.</p>
+
+  <img class="article-img" src="../imgs/reto_con_alberto.jpg" alt="Sergio Ordóñez y Alberto Lorente tras terminar el Reto Cantabria en Islares" loading="lazy" style="object-position: center 25%;">
+  <p class="article-img-caption">Con Alberto Lorente al terminar el reto · Islares, Cantabria</p>
+
+  <h2 class="article-h2">Lo que <em>me llevo</em></h2>
+
+  <p>Me llevo el recuerdo de un día que no iba a salir bien y salió. Me llevo la imagen de Alberto y David dando todo en condiciones que pondrían a prueba a cualquiera. Me llevo la certeza de que el Mar Cantábrico es duro, pero que precisamente por eso vale la pena.</p>
+
+  <p>Y me llevo algo que no estaba en el plan: <strong>dos amigos de verdad</strong>.</p>
+
+  <p>Hay retos que haces para demostrar algo. Este lo hice para acompañar una causa que merece la pena y terminé llevándome mucho más de lo que di.</p>
+
+  <p><em>Eso es lo que tiene el mar. Que nunca te devuelve lo mismo que le das.</em></p>
+
+  <p style="text-align:center; font-size:0.85rem; letter-spacing:0.06em; color:var(--muted); margin-top: 4rem;">¿Qué te ha parecido? Cuéntamelo en Instagram —&nbsp;<a href="https://www.instagram.com/coachsergiordonez" target="_blank" rel="noopener noreferrer" style="color:var(--blue); text-decoration:none;">@coachsergiordonez</a></p>
+
+  <div class="article-cta">
+    <span class="article-cta-label">¿Te ha inspirado?</span>
+    <div class="article-cta-title">El agua espera</div>
+    <p>Si quieres empezar o llevar tu natación más lejos — en piscina o en aguas abiertas — hablamos sin compromiso.</p>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSesxnLVkb-YdPcBTXJpyCVTngfMG-rwtgU6zSA1Izod4POlUQ/viewform?usp=header" target="_blank" rel="noopener noreferrer" class="btn-primary">Empieza ahora</a>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Hydro<span>Elite</span></div>
+  <div class="footer-copy">© 2026 HydroElite · Coach Sergio Ordóñez</div>
+</footer>
+
+</body>
+</html>
