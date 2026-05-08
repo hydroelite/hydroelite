@@ -13,14 +13,15 @@
 <!-- Open Graph -->
 <meta property="og:title" content="HydroElite · Análisis Biomecánico y Entrenamiento de Natación">
 <meta property="og:description" content="Nunca nadarás solo. Análisis biomecánico, entrenamiento personalizado, clínics y campus de natación por toda España. Coach Sergio Ordóñez — Entrenador Superior Nivel 3.">
+<meta property="og:url" content="https://hydroelite.coach/">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_ES">
-<meta property="og:image" content="imgs/australia_grupo.jpg">
+<meta property="og:image" content="https://hydroelite.coach/imgs/australia_grupo.jpg">
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="HydroElite · Análisis Biomecánico y Entrenamiento de Natación">
 <meta name="twitter:description" content="Nunca nadarás solo. Análisis biomecánico, entrenamiento personalizado y campus de natación por toda España.">
-<meta name="twitter:image" content="imgs/australia_grupo.jpg">
+<meta name="twitter:image" content="https://hydroelite.coach/imgs/australia_grupo.jpg">
 <meta name="google-site-verification" content="9i71a4Nbe2F6g8QYEuKd-n2JrgRdClpXGocg2_h7izk" />
 <!-- Favicon -->
 <link rel="icon" type="image/x-icon" href="imgs/favicon.ico">
@@ -1239,28 +1240,8 @@
       <a href="https://docs.google.com/forms/d/e/1FAIpQLSesxnLVkb-YdPcBTXJpyCVTngfMG-rwtgU6zSA1Izod4POlUQ/viewform?usp=header" target="_blank" rel="noopener noreferrer" class="btn-ghost">Consulta un evento</a>
     </div>
 
-    <div style="font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--blue);margin-bottom:1.5rem;">Próximos eventos confirmados</div>
+    <div style="font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--blue);margin-bottom:1.5rem;">Próximo evento confirmado</div>
 
-    <!-- CLINIC SALIDAS & VIRAJES — 2 mayo 2026 -->
-    <div class="event-item fade-up" style="border-left:2px solid var(--blue);padding-left:1.5rem;margin-left:-1.5rem;margin-bottom:2rem;">
-      <div class="event-date-block" style="border-color:var(--blue);">
-        <span class="event-date-day">2 May</span>
-        <span class="event-date-month">2026</span>
-      </div>
-      <div>
-        <div class="event-info-name">Clinic Salidas &amp; Virajes — con Simone Locchi</div>
-        <div class="event-info-meta">Piscina La Cross · Maliaño, Cantabria · 9:30 – 11:30h · Plazas limitadas</div>
-        <div style="display:flex;gap:0.8rem;margin-top:1rem;flex-wrap:wrap;">
-          <a href="https://drive.google.com/file/d/1ZZ83910puLcmeIZNzIt9acyZVSHAAi-g/view?usp=sharing" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:0.5rem;background:var(--blue);color:#fff;padding:0.55rem 1.2rem;font-family:'DM Sans',sans-serif;font-size:0.78rem;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;border-radius:2px;transition:opacity 0.2s;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-            Ver cartel
-          </a>
-        </div>
-      </div>
-      <span class="event-badge soon">Próximo</span>
-    </div>
-
-    <!-- CAMPUS LOREDO — 26 Jun–1 Jul 2026 -->
     <div class="event-item fade-up" style="border-left:2px solid var(--blue);padding-left:1.5rem;margin-left:-1.5rem;">
       <div class="event-date-block" style="border-color:var(--blue);">
         <span class="event-date-day">26 Jun–1 Jul</span>
@@ -1284,6 +1265,18 @@
     </div>
 
     <div style="font-size:0.72rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);margin:3rem 0 1.5rem;">Participaciones anteriores</div>
+
+    <div class="event-item fade-up" style="opacity:0.55;padding:1.2rem 0;">
+      <div class="event-date-block" style="padding:0.5rem;">
+        <span class="event-date-day" style="font-size:1rem;">2 May</span>
+        <span class="event-date-month">2026</span>
+      </div>
+      <div>
+        <div class="event-info-name" style="font-size:1.1rem;">Clinic Salidas &amp; Virajes — con Simone Locchi</div>
+        <div class="event-info-meta">Piscina La Cross · Maliaño, Cantabria · Organizado por HydroElite</div>
+      </div>
+      <span class="event-badge full">Completado</span>
+    </div>
 
     <div class="event-item fade-up" style="opacity:0.55;padding:1.2rem 0;">
       <div class="event-date-block" style="padding:0.5rem;">
@@ -1551,33 +1544,5 @@ navLinks.querySelectorAll('a').forEach(link => {
     const el = document.getElementById(id);
     if (el) observer.observe(el);
   });
-})();
-
-// COOKIE BANNER
-(function() {
-  if (localStorage.getItem('he_cookies_ok')) return;
-  const banner = document.createElement('div');
-  banner.id = 'cookie-banner';
-  banner.style.cssText = `
-    position:fixed;bottom:0;left:0;right:0;z-index:9999;
-    background:#0a1628;border-top:1px solid rgba(30,127,216,0.3);
-    padding:1.2rem 2rem;display:flex;align-items:center;
-    justify-content:space-between;gap:1.5rem;flex-wrap:wrap;
-    font-family:'DM Sans',sans-serif;font-size:0.82rem;
-    color:#8a8f9e;line-height:1.6;
-  `;
-  banner.innerHTML = `
-    <span>
-      Este sitio no instala cookies de seguimiento. El formulario externo de Google puede generar las suyas propias.
-      <a href="privacidad.html" style="color:#1e7fd8;text-decoration:none;margin-left:0.4rem;">Más información</a>
-    </span>
-    <button onclick="localStorage.setItem('he_cookies_ok','1');document.getElementById('cookie-banner').remove();"
-      style="background:#1e7fd8;color:#fff;border:none;padding:0.55rem 1.4rem;
-      font-family:'DM Sans',sans-serif;font-size:0.8rem;letter-spacing:0.06em;
-      text-transform:uppercase;cursor:pointer;white-space:nowrap;flex-shrink:0;">
-      Entendido
-    </button>
-  `;
-  document.body.appendChild(banner);
 })();
 </script>

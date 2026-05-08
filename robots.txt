@@ -1,4 +1,3 @@
 User-agent: *
 Allow: /
-
-Sitemap: https://hydroelite.github.io/hydroelite/sitemap.xml
+Sitemap: https://hydroelite.coach/sitemap.xml
