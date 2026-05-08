@@ -1552,4 +1552,32 @@ navLinks.querySelectorAll('a').forEach(link => {
     if (el) observer.observe(el);
   });
 })();
+
+// COOKIE BANNER
+(function() {
+  if (localStorage.getItem('he_cookies_ok')) return;
+  const banner = document.createElement('div');
+  banner.id = 'cookie-banner';
+  banner.style.cssText = `
+    position:fixed;bottom:0;left:0;right:0;z-index:9999;
+    background:#0a1628;border-top:1px solid rgba(30,127,216,0.3);
+    padding:1.2rem 2rem;display:flex;align-items:center;
+    justify-content:space-between;gap:1.5rem;flex-wrap:wrap;
+    font-family:'DM Sans',sans-serif;font-size:0.82rem;
+    color:#8a8f9e;line-height:1.6;
+  `;
+  banner.innerHTML = `
+    <span>
+      Este sitio no instala cookies de seguimiento. El formulario externo de Google puede generar las suyas propias.
+      <a href="privacidad.html" style="color:#1e7fd8;text-decoration:none;margin-left:0.4rem;">Más información</a>
+    </span>
+    <button onclick="localStorage.setItem('he_cookies_ok','1');document.getElementById('cookie-banner').remove();"
+      style="background:#1e7fd8;color:#fff;border:none;padding:0.55rem 1.4rem;
+      font-family:'DM Sans',sans-serif;font-size:0.8rem;letter-spacing:0.06em;
+      text-transform:uppercase;cursor:pointer;white-space:nowrap;flex-shrink:0;">
+      Entendido
+    </button>
+  `;
+  document.body.appendChild(banner);
+})();
 </script>
